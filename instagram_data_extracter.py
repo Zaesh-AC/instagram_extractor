@@ -1,7 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import os
 import json
+import subprocess
 import pandas as pd
 
 MEDIA_DIR = 'media/'
@@ -30,9 +31,9 @@ if __name__ == '__main__':
     for group in df.groupby(["caption", "taken_at"], axis=0):
         caption = get_caption(group)
         taken_at = get_date(group)
-        os.system(f'mkdir "output/{taken_at}"')
+        subprocess.run(f'mkdir "output/{taken_at}"', shell=True)
         if caption != '':
             with open(f'output/{taken_at}/caption.txt', 'w') as file:
                 file.write(caption)
         for path in get_paths(group):
-            os.system(f'cp {path} "output/{taken_at}"')
+            subprocess.run(f'cp {path} "output/{taken_at}"', shell=True)
