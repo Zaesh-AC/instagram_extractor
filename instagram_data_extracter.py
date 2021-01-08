@@ -4,30 +4,14 @@ import os
 import json
 import pandas as pd
 
+MEDIA_DIR = 'media/'
+
 def get_dataframe():
-    f = open('data/media.json')
-    f1 = open('data/media (1).json')
-    f2 = open('data/media (2).json')
-    f3 = open('data/media (3).json')
-    f4 = open('data/media (4).json')
-    f5 = open('data/media (5).json')
-    f6 = open('data/media (6).json')
-    data = json.load(f)
-    data1 = json.load(f1)
-    data2 = json.load(f2)
-    data3 = json.load(f3)
-    data4 = json.load(f4)
-    data5 = json.load(f5)
-    data6 = json.load(f6)
-    df = pd.DataFrame(data['photos'])
-    df = pd.concat([df,
-               pd.DataFrame(data1['photos']),
-              pd.DataFrame(data2['photos']),
-              pd.DataFrame(data3['photos']),
-              pd.DataFrame(data4['photos']),
-              pd.DataFrame(data5['photos']),
-              pd.DataFrame(data6['photos']),
-               ])
+    df = pd.DataFrame()
+    for filename in os.listdir(MEDIA_DIR):
+        with open(f'{MEDIA_DIR+filename}') as f:
+            data = json.load(f)
+            df = pd.concat([df, pd.DataFrame(data["photos"])])
     df["taken_at"] = pd.to_datetime(df["taken_at"])
     df.drop(labels=["location"], axis=1, inplace=True)
     return df
