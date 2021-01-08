@@ -4,9 +4,11 @@ bin/
 etc/
 lib/
 share/
+output/
 pyvenv.cfg
 .ipynb_checkpoints/
 
 data/
 photos/
 *.7z
+*.zip
