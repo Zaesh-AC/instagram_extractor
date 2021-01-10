@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
-import os
-import json
-import subprocess
+import os, json, subprocess, sys
 import pandas as pd
 
 MEDIA_DIR = 'media/'
@@ -27,6 +25,8 @@ def get_paths(group):
     return group[1]["path"]
 
 if __name__ == '__main__':
+    if not sys.platform == 'linux':
+        raise ('Sorry, this script will not work on your Operating System :( ')
     df = get_dataframe()
     for group in df.groupby(["caption", "taken_at"], axis=0):
         caption = get_caption(group)
