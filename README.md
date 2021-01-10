@@ -40,6 +40,6 @@ Now that you have all the needed follow this simple instructions to make the scr
 
 - Put  all your 'media.json' file in 'media' directory.
 - Put all your photos in 'photos' directory
-- Launch the script invoking it typing ./instagram_data_extracter.py
+- Launch the script invoking it typing python3 instagram_data_extracter.py
 
 In the end you will find your posts, divided by creation date, in directories in the '*output*' directory
