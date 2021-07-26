@@ -1,4 +1,9 @@
+import logging
+
 from flask import Flask, render_template
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
