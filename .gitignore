@@ -6,6 +6,7 @@ lib/
 share/
 pyvenv.cfg
 .ipynb_checkpoints/
+__pycache__/
 
 data/
 *.7z
