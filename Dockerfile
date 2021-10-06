@@ -1,11 +1,9 @@
-# FROM python:3.7.10-slim-buster
-FROM debian:buster-slim
+FROM python:3.7.10-slim-buster
 
 EXPOSE 5000
 
 ADD ./requirements/ /code/requirements/
-RUN apt update && apt upgrade -y && apt install python3-venv python3-pip -y
-RUN pip3 install --upgrade pip && pip3 install -r /code/requirements/requirements.txt
+RUN pip install --upgrade pip && pip install -r /code/requirements/requirements.txt
 
 COPY . /code/
 WORKDIR /code/
