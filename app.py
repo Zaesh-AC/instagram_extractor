@@ -1,9 +1,7 @@
 import logging
-import os
-import zipfile
 from zipfile import ZipFile
 
-from plugins import extract_information
+from plugins import extract_information, get_file_path
 from plugins.settings import OUTPUT_DIR
 
 from flask import (
@@ -17,20 +15,6 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-
-def get_image_path(post):
-    return post[0].split("/")
-
-def get_image_source(post):
-    return get_image_path(post)[:3]
-
-def get_image_filename(post):
-    return get_image_path(post)[3:4][0]
-
-def get_file_path(post):
-    source = "/".join(get_image_source(post))
-    filename = get_image_filename(post)
-    return f"data/{source}/{filename.split('.')[0]}"
 
 
 @app.route("/", methods=["GET", "POST"])
