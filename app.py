@@ -1,4 +1,5 @@
 import logging
+import os
 import zipfile
 from zipfile import ZipFile
 
@@ -9,6 +10,7 @@ from flask import (
     Flask,
     render_template,
     request,
+    send_file
 )
 
 logging.basicConfig(level=logging.DEBUG)
@@ -36,13 +38,14 @@ def home():
     if request.method == "POST" and request.files["posts"]:
         file = request.files["posts"]
         posts = extract_information(file)
-        username = request.form.get('username')
         username = "username" if request.form.get("username") == "" else request.form.get("username")
-        with ZipFile(f"data/{username}.zip", mode="x") as zip:
+        zipfile = f"data/{username}.zip"
+        with ZipFile(zipfile, mode="x") as zip:
             for post in posts:
                 file_path = get_file_path(post)
                 with open(f"{file_path}.txt", 'w+') as caption:
                     caption.write(post[1])
                 zip.write(f"{file_path}.jpg")
                 zip.write(f"{file_path}.txt")
+        return send_file(zipfile)
     return render_template("homepage.html")
