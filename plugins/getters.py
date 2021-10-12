@@ -15,8 +15,8 @@ def get_file_path(post):
 def get_context_data():
     return {
         "title": "Instagram Data Extractor",
-        "home_text": "Home text",
-        "description": "Desc",
+        "home_text": "Instagram Data Extractor",
+        "description": "This web app is intended to help people extracting their Instagram's post data from the HTML downloaded via Instagram's app.",
         "instructions": "Inst",
         "": "",
     }
