@@ -10,6 +10,7 @@ from flask import (
 )
 
 from plugins import extract_information, get_file_path
+from plugins.getters import get_context_data
 from plugins.settings import UPLOAD_FOLDER
 
 
@@ -38,4 +39,4 @@ def home():
                 zip.write(f"{file_path}.jpg")
                 zip.write(f"{file_path}.txt")
         return send_file(filename)
-    return render_template("homepage.html")
+    return render_template("homepage.html", **get_context_data())
