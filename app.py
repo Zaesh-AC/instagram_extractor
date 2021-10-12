@@ -9,9 +9,12 @@ from flask import (
     send_file
 )
 
-from plugins import extract_information, get_file_path
-from plugins.getters import get_context_data
-from plugins.settings import UPLOAD_FOLDER
+from plugins import (
+    extract_information,
+    get_file_path,
+    get_context_data
+)
+from settings import UPLOAD_FOLDER
 
 
 logging.basicConfig(level=logging.DEBUG)

@@ -1,7 +1,7 @@
 import logging
 
 from bs4 import BeautifulSoup
-from plugins.settings import *
+from settings import POST_CSS_CLASS, CAPTION_CSS_CLASS
 
 
 logger = logging.getLogger(__name__)
